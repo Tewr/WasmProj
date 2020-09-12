@@ -1,5 +1,16 @@
-﻿@using Tewr.Blazor.FileReader;
+﻿@*@inherits DataInputFileForm*@
+@using Tewr.Blazor.FileReader;
 @inject Tewr.Blazor.FileReader.IFileReaderService fileReaderService
+@inject ElementReference InputElement
+@inject string Label
+@inject string FileContent
+@inject EventCallback OnUseLogs
+@inject List<SiteLog> LoadedData
+@inject ElementReference InputElement
+@inject string _status
+@inject EventCallback OnConvertData
+@inject EventCallback FilesSelected
+
 <div class="container">
     <div class="row mb-2">
         <div class="col">
@@ -18,11 +29,11 @@
     </div>
     @if (LoadedData != null)
     {
-    <div class="row mb-2">
-        <div class="col">
-            <div class="text-info">Number of logs loaded: @LoadedData.Count</div>
+        <div class="row mb-2">
+            <div class="col">
+                <div class="text-info">Number of logs loaded: @LoadedData.Count</div>
+            </div>
         </div>
-    </div>
     }
     <div class="row">
         <div class="col">

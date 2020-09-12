@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
+using Tewr.Blazor.FileReader;
 
 namespace BlazorWasmOnlyTest.Shared
 {
 
-    public partial class DataInputFileForm
+    public class DataInputFileForm : ComponentBase
     {
         
         [Parameter] public string Label { get; set; } = "Select file (-s)";
@@ -20,6 +21,8 @@ namespace BlazorWasmOnlyTest.Shared
         [Parameter] public int SiteID { get; set; }
         ElementReference InputElement;
         private string _status;
+
+        [Inject] protected IFileReaderService fileReaderService { get; set; }
 
         async Task FilesSelected()
         {
