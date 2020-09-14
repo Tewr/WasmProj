@@ -6,23 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
-using Tewr.Blazor.FileReader;
 
-namespace BlazorWasmOnlyTest.Shared
+namespace WasmProj.Shared
 {
-
-    public class DataInputFileForm : ComponentBase
+    public partial class DataInputFileForm
     {
-        
+
         [Parameter] public string Label { get; set; } = "Select file (-s)";
         [Parameter] public string FileContent { get; set; } = "";
-        [Parameter] public EventCallback OnUseLogs{ get; set; }
+        [Parameter] public EventCallback OnUseLogs { get; set; }
         [Parameter] public List<SiteLog> LoadedData { get; set; } = new List<SiteLog>();
         [Parameter] public int SiteID { get; set; }
         ElementReference InputElement;
         private string _status;
-
-        [Inject] protected IFileReaderService fileReaderService { get; set; }
 
         async Task FilesSelected()
         {
@@ -34,13 +30,13 @@ namespace BlazorWasmOnlyTest.Shared
 
                 var filename = fileInfo.Name;
                 _status += $"Loading {filename}, ";
-                //StateHasChanged();
+                StateHasChanged();
                 using (Stream stream = await file.OpenReadAsync())
                 {
-                    FileContent =   await ReadAllText(stream, Encoding.UTF8);
+                    FileContent = await ReadAllText(stream, Encoding.UTF8);
                 }
                 _status += $"loaded text from file with length {FileContent.Length}, ";
-                //StateHasChanged();
+                StateHasChanged();
             }
         }
 
@@ -48,7 +44,7 @@ namespace BlazorWasmOnlyTest.Shared
         {
             using (var reader = new StreamReader(stream, encoding))
             {
-                var result =await reader.ReadToEndAsync();
+                var result = await reader.ReadToEndAsync();
                 return result;
             }
         }
@@ -73,10 +69,10 @@ namespace BlazorWasmOnlyTest.Shared
             {
                 _status += "There is no text loaded.";
             }
-            //StateHasChanged();
+            StateHasChanged();
         }
 
-     
+
         public async Task<List<SiteLog>> ConvertJsonToSiteLogs(string json)
         {
             return JsonSerializer.Deserialize<SiteLog[]>(json).ToList();

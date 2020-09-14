@@ -14,4 +14,8 @@
     <PackageReference Include="Tewr.Blazor.FileReader" Version="2.0.0.20242" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="D:\repos\dotnet_runtime\artifacts\bin\System.Text.Json\net5.0-Release\System.Text.Json.dll" />
+  </ItemGroup>
+
 </Project>

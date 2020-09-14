@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BlazorWasmOnlyTest.Shared
+namespace WasmProj.Shared
 {
     public class SiteLog
     {
