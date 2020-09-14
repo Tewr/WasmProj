@@ -15,7 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="D:\repos\dotnet_runtime\artifacts\bin\System.Text.Json\net5.0-Release\System.Text.Json.dll" />
+    <!--Use latest build of System.Text.Json-->
+    <!--<Reference Include="D:\repos\dotnet_runtime\artifacts\bin\System.Text.Json\net5.0-Release\System.Text.Json.dll" />-->
   </ItemGroup>
 
 </Project>
